@@ -1,7 +1,9 @@
+from _typeshed import StrOrBytesPath
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
+# Initializing Bicycle model class and defining reset function (with zero initial conditions)
 class Bicycle():
     def __init__(self):
         self.xc = 0
@@ -27,17 +29,15 @@ class Bicycle():
 class Bicycle(Bicycle):
     def step(self, v, w):
         # ==================================
-        #  Kinematic model implementation
+        # Kinematic Bicycle model implementation (with numerical intwegration to propagate the kinematics through time)
+        # Implementation below is for every time step
         # ==================================
-        for self.sample_time in range(0, 100, 0.01):
-            self.delta = self.delta +  (w*self.sample_time) 
-            self.theta = self.theta + ((v*np.cos(self.beta)*np.tan(self.delta))/self.L)*self.sample_time
-            self.xc = self.xc + (v*np.cos(self.theta + self.beta))*self.sample_time
-            self.yc = self.yc + (v*np.sin(self.theta + self.beta))*self.sample_time
-            self.sample_time += self.sample_time
-            if w > self.w_max:
-                break
+        self.delta = self.delta +  (w*self.sample_time)
+        self.theta = self.theta + ((v*np.cos(self.beta)*np.tan(self.delta))/self.L)*self.sample_time
+        self.xc = self.xc + (v*np.cos(self.theta + self.beta))*self.sample_time
+        self.yc = self.yc + (v*np.sin(self.theta + self.beta))*self.sample_time
         
+            
         self.beta = np.arctan((self.lr*np.tan(self.delta))/self.L)
          
         pass
