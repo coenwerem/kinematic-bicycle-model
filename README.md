@@ -1,2 +1,2 @@
 # kinematic-bicycle-model
- A Python implementation of the well-established kinematic vehicle model convenient for longitudinal control.
+ A Python implementation of the well-established kinematic vehicle model for longitudinal control.
