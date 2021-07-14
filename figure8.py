@@ -29,6 +29,7 @@ class Bicycle(Bicycle):
     def step(self, v, w):
         # ==================================
         # Kinematic Bicycle model implementation (with numerical integration to propagate the kinematics through time)
+        
         # Implementation below is for every time step
         # ==================================
         self.delta = self.delta +  (w*self.sample_time)
@@ -78,7 +79,6 @@ for i in range(t_data.shape[0]):
         else:
             w_data[i] = 0
             model.step(v_data[i], w_data[i])
-    
     
 # ==================================
 #  Learner solution ends here
